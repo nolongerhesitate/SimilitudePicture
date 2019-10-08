@@ -4,6 +4,7 @@
 #include <QDir>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QThread>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -54,12 +55,14 @@ void MainWindow::on_pushButton_clicked()
         if(!isPicture(list[i].filePath())) continue;
         QImage tmpImg;
         tmpImg.load(list[i].filePath());
+        qDebug()<<i<<endl;
         if(isSimilitude(img,tmpImg,10)){
             ui->textEdit->append(list[i].filePath());
         }
     }
 
     ui->progressBar->setValue(list.size());
+
     ui->selImgBtn->setEnabled(true);
     ui->selDirBtn->setEnabled(true);
     ui->imgLineEdit->setEnabled(true);
