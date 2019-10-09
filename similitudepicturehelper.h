@@ -2,7 +2,7 @@
 #define SIMILITUDEPICTUREHELPER_H
 
 #include <QImage>
-
+#include <QDebug>
 
 
 class SimilitudePictureHelper

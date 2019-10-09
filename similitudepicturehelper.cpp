@@ -50,18 +50,20 @@ double SimilitudePictureHelper::g_avg_pixel(QImage image)
     double avg_pixel=0;
     int height = image.height();
     int width = image.width();
-
+//    qDebug()<< "w== " << width << " h== " << height<< endl;
     for(int row=0;row<height; row++){
         for (int cols =0;cols<width;cols++) {
             QRgb rgb = image.pixel(cols,row);
             avg_pixel += rgb;
         }
     }
+
     return avg_pixel/(height*width);
 }
 
 QString SimilitudePictureHelper::toHash(QImage image, const double& avg_pixel)
 {
+//    qDebug()<< "=== "<< QString("%1").arg(avg_pixel, 0, 'f', 3) << endl;
     QString hash = "";
     int height = image.height();
     int width = image.width();
@@ -120,12 +122,14 @@ bool SimilitudePictureHelper::isPicture(const QString &filePath)
 QString SimilitudePictureHelper::toHash(QImage image)
 {
     QImage res = toGray(image.scaled(scaled_w,scaled_h,Qt::KeepAspectRatio,Qt::FastTransformation));
+    res.save("/Users/sung/Desktop/s.png");
     double avg = g_avg_pixel(res);
     return toHash(res,avg);
 }
 
 bool SimilitudePictureHelper::isSimilitude(QString imgHash, QImage img2, int weight)
 {
+//    qDebug()<<"toHash === "<<toHash(img2)<<endl;
     return !(getHamming(imgHash,toHash(img2))>weight);
 }
 
