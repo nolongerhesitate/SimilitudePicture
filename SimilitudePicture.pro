@@ -1,5 +1,4 @@
 QT       += core gui
-QT 	 += concurrent
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -18,14 +17,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp \
-    mainwindowthread.cpp \
-    similitudepicturehelper.cpp
+    mainwindow.cpp
 
 HEADERS += \
-    mainwindow.h \
-    mainwindowthread.h \
-    similitudepicturehelper.h
+    mainwindow.h
 
 FORMS += \
     mainwindow.ui

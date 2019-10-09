@@ -1,9 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "mainwindowthread.h"
-#include "similitudepicturehelper.h"
-
 #include <QMainWindow>
 #include <QDebug>
 #include <QList>
@@ -34,17 +31,9 @@ private slots:
 
     void on_selDirBtn_clicked();
 
-    void isSimilitudeSlot(const QString& isSimilitude);
-
-    void progressBarSlot();
-
-    void on_cancelBtn_clicked();
-
 private:
     Ui::MainWindow *ui;
     QString imgPath;
     QString dirPath;
-    SimilitudePictureHelper *sph;
-    MainWindowThread mwt;
 };
 #endif // MAINWINDOW_H
