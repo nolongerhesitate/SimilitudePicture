@@ -32,7 +32,7 @@ signals:
 public:
     QImage img;
     QString imgHash;
-    int weight = 7;
+    int weight = 4;
     QFileInfoList list;
 
 private:

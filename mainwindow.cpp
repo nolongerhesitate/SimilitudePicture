@@ -36,6 +36,12 @@ void MainWindow::on_pushButton_clicked()
         return;
     }
 
+    QImage img;
+    if(!img.load(imgPath)){
+        QMessageBox::warning(this,"错误","要判断的图片不存在");
+        return;
+    }
+
     ui->selImgBtn->setEnabled(false);
     ui->selDirBtn->setEnabled(false);
     ui->imgLineEdit->setEnabled(false);
@@ -49,8 +55,6 @@ void MainWindow::on_pushButton_clicked()
     ui->progressBar->setValue(0);
 
 
-    QImage img;
-    img.load(imgPath);
     QDir dir(dirPath);
     dir.setFilter(QDir::Files);//除了文件，其他的过滤掉
     mwt.list = dir.entryInfoList();//获取文件信息列表
@@ -121,4 +125,9 @@ void MainWindow::on_cancelBtn_clicked()
     ui->textEdit->setEnabled(true);
     ui->pushButton->setEnabled(true);
     ui->cancelBtn->setEnabled(false);
+}
+
+void MainWindow::on_imgLineEdit_editingFinished()
+{
+    imgPath = ui->imgLineEdit->text();
 }

@@ -40,6 +40,8 @@ private slots:
 
     void on_cancelBtn_clicked();
 
+    void on_imgLineEdit_editingFinished();
+
 private:
     Ui::MainWindow *ui;
     QString imgPath;
